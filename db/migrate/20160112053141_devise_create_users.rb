@@ -32,11 +32,12 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       ## User info
       t.string     :first_name
-      t.string     :faily_name
+      t.string     :family_name
       t.integer    :age
       t.string     :belong        # 所属
       t.text       :self_intro    # 自己紹介
       t.integer    :venture_id
+      t.boolean    :sex
 
       t.timestamps null: false
     end
