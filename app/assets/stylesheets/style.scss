@@ -1,6 +1,6 @@
 // navbar
 .navbar-brand-image{
-  background: url("KBC_logo_transparent.png") no-repeat center center;
+  background: url("KBC/KBC_logo_transparent.png") no-repeat center center;
   background-size: contain;
   height: 45px;
   width:220px;
@@ -10,10 +10,102 @@
   opacity:.9;
 }
 
-// 全体的な設定
-
+// mainページ全体の設定
 .main-page-all{
   margin-top:50px;
+}
+
+// explainページの設定
+.main_page-explain-area{
+  background-color:rgba(230, 230, 230, .5);
+  max-width:500px;
+  margin:25px auto;
+  padding-bottom:10px;
+}
+
+
+// activity-area
+.activity-area{
+  position:relative;
+  margin:0 auto;
+  max-width:500px;
+  height:300px;
+  color:#FFF;
+  background-image: asset-data-url("KBC/KBC_Activity.JPG");
+  background-position:center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.activity-area-inner{
+  padding:5px 0;
+  h2{
+    font-size:25px;
+    padding-left:15px;
+  }
+}
+
+.activity-area-inner-transparent{
+  padding:40px 0;
+  background-color:rgba(240, 240, 240, 0.5);
+  width:100%;
+  min-height:50px;
+}
+
+// mentor-area
+.explain-area{
+  width:92%;
+  color:black;
+  margin:20px 20px;
+  h2{
+    font-size:20px;
+  }
+  p{
+    margin-top:20px;
+    line-height: 1.6;
+    font-size:15px;
+  }
+}
+
+// signinup-area の設定
+.main-page-signinup-area{
+  max-width:500px;
+  background-color:rgba(230, 230, 230, .5);
+  margin:25px auto;
+  padding-bottom:10px;
+}
+
+// latest-area の設定
+.latest-area{
+  position:relative;
+  margin:0 auto;
+  max-width:500px;
+  height:200px;
+  color:#FFF;
+  background-image: asset-data-url("KBC/KBC_Stage.JPG");
+  background-position:center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+// devise-error
+#error_explanation{
+  background-color:rgba(255, 30, 30, 0.5);
+  border-radius:10px;
+  padding:2px;
+  h2{
+    font-weight:bold;
+    font-size:15px;
+    text-align:center;
+  }
+  li{
+    font-size:12px;
+    list-style: none;
+  }
 }
 
 // フォームの設定
@@ -56,3 +148,9 @@
   width:100%;
 }
 
+.half-width{
+  width:50%;
+}
+body, td, th, form, h1, h2, h3, h4, h5, p, a, li {
+    font-family: SalesforceSansRegular, メイリオ, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'ＭＳ Ｐゴシック', Arial, Helvetica, Verdana, sans-serif;
+}

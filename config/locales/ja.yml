@@ -1,6 +1,6 @@
 ja:
   attributes:
-    email: メールアドレス
+    email: メールアドレス(8字以上)
     password_confirmation: パスワード(確認用)
     password: パスワード
     group_id: グループ名

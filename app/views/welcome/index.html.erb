@@ -1,5 +1,23 @@
-<div>
-  <header class="header">
-    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-  </header>
+<div class="container text-center">
+  <% unless user_signed_in? %>
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="main_page-explain-area">
+          <%= render 'common/activity' %>
+          <div class="text-left">
+            <%= render 'common/mentor' %>
+            <%= render 'common/community' %>
+            <%= render 'common/media' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="main-page-signinup-area text-left">
+          <%= render 'common/latest' %>
+          <%= render 'common/usersample' %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+  <% end %>
 </div>
