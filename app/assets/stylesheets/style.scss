@@ -1,0 +1,58 @@
+// navbar
+.navbar-brand-image{
+  background: url("KBC_logo_transparent.png") no-repeat center center;
+  background-size: contain;
+  height: 45px;
+  width:220px;
+}
+
+.kbc-navbar{
+  opacity:.9;
+}
+
+// 全体的な設定
+
+.main-page-all{
+  margin-top:50px;
+}
+
+// フォームの設定
+
+.signup-page{
+  background-color:rgba(230, 230, 230, .5);
+  padding:50px 10px;
+}
+
+.signup-area{
+  max-width:500px;
+  padding:15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius:10px;
+}
+
+.form-field{
+  margin:5px;
+}
+
+.form-label{
+  margin:5px 0;
+}
+
+.form-layout-small{
+  max-width:450px;
+  height:40px;
+}
+
+.form-actions{
+  margin:10px 10px;
+}
+
+// 全体的な設定
+.block-center{
+  margin: 0 auto;
+}
+
+.max-width{
+  width:100%;
+}
+

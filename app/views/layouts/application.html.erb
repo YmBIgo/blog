@@ -7,8 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <%= render "layouts/navbar" %>
+  <div class="text-center main-page-all">
+    <%= yield %>
+  </div>
+  <hr>
+  <footer class="footer text-center">
+    <p><small>@2016 KBC実行委員会</small></p>
+  </footer>
 </body>
 </html>
