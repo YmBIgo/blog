@@ -36,7 +36,7 @@
             </li>
           <% end %>
           <li>
-            <%= link_to "自分の情報を確認する", user_path(current_user.id) %>
+            <%= link_to current_user.name, user_path(current_user.id) %>
           </li>
           <li>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

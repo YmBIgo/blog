@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "welcome#index"
-  match '/mentor',    to: 'static_pages#mentor',     via: 'get'
+  match '/mentor_info',    to: 'static_pages#mentor',     via: 'get'
   match '/community', to: 'static_pages#community',  via: 'get'
 
   resources       :users,       only:[:show, :index, :edit, :update]
