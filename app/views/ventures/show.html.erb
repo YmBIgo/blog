@@ -7,9 +7,10 @@
             <strong><%= @venture.name %></strong>
             <% if user_signed_in? %>
               <% if current_user.owned_venture(current_user) == @venture.id %>
-                ：<%= link_to "編集する",
+                <br>
+                <%= link_to "編集する",
                             edit_venture_path(@venture.id),
-                            :class => "btn btn-primary" %>
+                            :class => "btn btn-primary form-actions" %>
               <% end %>
             <% end %>
           </h3>

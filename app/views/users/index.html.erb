@@ -1,3 +1,9 @@
-<div class="container text-center">
-  
+<div class="container text-left">
+  <div class="user-show-page">
+    <%= text_field :text, :user, :class => "form-control" %>
+    <hr>
+    <div class="user-search">
+      <%= render @users %>
+    </div>
+  </div>
 </div>
