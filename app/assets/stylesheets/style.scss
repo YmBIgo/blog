@@ -69,8 +69,8 @@
   }
 }
 
-// signinup-area の設定
-.main-page-signinup-area{
+// latest-area の設定
+.main-page-latest-area{
   max-width:500px;
   background-color:rgba(230, 230, 230, .5);
   margin:25px auto;
@@ -148,24 +148,60 @@
 }
 
 .form-area{
-  margin:25px auto;
+  margin:0 auto;
 }
 
 // 登録催促
 .not-finish-register{
   margin-top:15px;
-  background-color:rgba(20, 240, 20, .4);
+  background-color:rgba(240, 20, 20, .2);
   padding:7px 0 1px 0;
   border-radius:10px;
 }
 
+// 編集
+.edit-page{
+  margin:25px auto;
+}
+
+// ユーザー表示
+.user-show-page{
+  margin:25px auto;
+}
+
+// rootでのユーザーページ
+.main-page-mypage-area{
+  max-width:500px;
+  background-color:rgba(230, 230, 230, .5);
+  margin:25px auto;
+  padding-bottom:10px;
+}
+
+// hover
+.hover_img:hover{
+  opacity: .8;
+}
+
 // 全体的な設定
+.pad-vertical-sm{
+  padding:10px;
+}
+
 .block-center{
   margin: 0 auto;
 }
 
+.img-center{
+  display:block;
+  margin:0 auto;
+}
+
 .max-width{
   width:100%;
+}
+
+.color-orange{
+  color:#e7410a;
 }
 
 .half-width{

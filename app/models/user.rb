@@ -4,12 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :venture
   ## s3 image
   has_attached_file :image,
                     :styles => {
                       :thumb  => "100x100",
-                      :medium => "200x200",
-                      :large  => "600x400"
+                      :medium => "150x150",
+                      :large  => "400x400"
                     },
                     :storage        => :s3,
                     :s3_permissions => :private,
@@ -23,6 +24,20 @@ class User < ActiveRecord::Base
 
   def full_profile?
     family_name? && first_name? && age? && belong? && self_intro? && image?
+  end
+
+  def register_venture?
+    Venture.where('owner = ?', id).present?
+  end
+
+  def owned_venture(u)
+    if u.register_venture?
+      Venture.where('owner = ?', id).first.id
+    end
+  end
+
+  def name
+    "#{family_name} #{first_name}"
   end
 
 end

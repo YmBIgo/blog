@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   match '/mentor',    to: 'static_pages#mentor',     via: 'get'
   match '/community', to: 'static_pages#community',  via: 'get'
 
-  resources       :users, only:[:show, :index, :edit, :update]
+  resources       :users,       only:[:show, :index, :edit, :update]
+  resources       :ventures,    only:[:new, :create, :show, :index, :edit, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -23,9 +23,16 @@
     <% else %>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <%= link_to "他のユーザーを検索する", users_path %>
-          </li>
+          <% if current_user.register_venture? %>
+            <li>
+              <%= link_to Venture.find(current_user.owned_venture(current_user)).name,
+                          venture_path(current_user.owned_venture(current_user)) %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "事業を登録する", new_venture_path %>
+            </li>
+          <% end %>
           <li>
             <%= link_to "自分の情報を確認する", user_path(current_user.id) %>
           </li>

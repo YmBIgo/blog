@@ -1,7 +1,7 @@
 <div class="container text-center">
   <% unless user_signed_in? %>
     <div class="row">
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="main_page-explain-area">
           <%= render 'common/activity' %>
           <div class="text-left">
@@ -11,8 +11,8 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <div class="main-page-signinup-area text-left">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="main-page-latest-area text-left">
           <%= render 'common/latest' %>
           <%= render 'common/usersample' %>
         </div>
@@ -23,12 +23,41 @@
       <div class="not-finish-register">
         <p>
         <strong>
-          まだ登録が完了すれば、グループの登録などが行えます。
-          <%= link_to "登録する", edit_user_path(current_user.id), :class => "btn btn-default" %>
+          登録が完了すれば、グループの登録などが行えます。
+          <%= link_to "登録する", edit_user_path(current_user.id), :class => "btn btn-danger" %>
         </strong>
         </p>
       </div>
       <hr>
     <% end %>
+    <br>
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="main-page-mypage-area">
+          <% unless current_user.register_venture? %>
+            <div class="register_new_venture">
+              <%= link_to "事業を登録する(1つまで)",
+                          new_venture_path,
+                          :class => "btn btn-primary btn-lg form-actions" %>
+            </div>
+          <% else %>
+            <div class="my_venture">
+              <h3 class="pad-vertical-sm">
+                <strong><%= @venture.name %></strong>
+              </h3>
+              <a href="/ventures/<%= current_user.owned_venture(current_user) %>">
+                <%= image_tag(@venture.authenticated_vimage_url(:medium), :class => "hover_img") %>
+              </a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="main-page-latest-area text-left">
+          <%= render 'common/latest' %>
+          <%= render 'common/usersample' %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>

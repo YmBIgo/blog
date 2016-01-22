@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="edit-page">
+    <%= form_for @venture do |f| %>
+          <div class="form-area">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th colspan="3"><strong>事業情報</strong></th>
+                </tr>
+              </thead>
+              <tr class="row">
+                <td class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <%= f.label "事業名", :class => "form-actions" %>
+                    <%= f.text_field :name,
+                                     :class => "form-control" %>
+                    <hr>
+                    <%= f.label "イメージ画像を選択",
+                                :class => "form-actions" %>
+                    <br>
+                    <%= image_tag 'Guest/no_image.jpg',
+                                  :size => "150x100",
+                                  :class => "form-actions" %>
+                    <%= f.file_field :v_image,
+                                     :class => "btn btn-primary",
+                                     :style => "max-width:200px;margin-top:5px;" %>
+                    <hr>
+                    <div class="form-actions">
+                      <p><strong>作成者：<%= current_user.name %>様</strong></p>
+                      <%= image_tag(current_user.authenticated_image_url(:medium)) if current_user.image.present? %>
+                    </div>
+                </td>
+                <td class=" col-xl-9 col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                  <%= f.label "事業概要", :class => "form-actions" %>
+                  <%= f.text_area :explain,
+                                  :size => "30x10",
+                                  :class => "form-control" %>
+                  <%= f.label "ビジョン", :class => "form-actions" %>
+                  <%= f.text_area :vision,
+                                  :size => "30x10",
+                                  :class => "form-control" %>
+                  <%= f.label "求める仲間", :class => "form-actions" %>
+                  <%= f.text_area :job_offer,
+                                  :size => "30x10",
+                                  :class => "form-control" %>
+                  <%= f.hidden_field :owner, :value => current_user.id %>
+                </td>
+              </tr>
+              <tfoot>
+                <tr>
+                  <th colspan="3">
+                    <div class="form-actions">
+                      <%= f.submit "登録する", :class => "btn btn-primary" %>
+                    </div>
+                  </th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+    <% end %>
+  </div>
+</div>

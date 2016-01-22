@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160121151824) do
+ActiveRecord::Schema.define(version: 20160122052744) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -46,5 +46,20 @@ ActiveRecord::Schema.define(version: 20160121151824) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "ventures", force: :cascade do |t|
+    t.string   "name",                 limit: 255
+    t.text     "explain",              limit: 65535
+    t.text     "reason",               limit: 65535
+    t.text     "vision",               limit: 65535
+    t.text     "job_offer",            limit: 65535
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "v_image_file_name",    limit: 255
+    t.string   "v_image_content_type", limit: 255
+    t.integer  "v_image_file_size",    limit: 4
+    t.datetime "v_image_updated_at"
+    t.integer  "owner",                limit: 4
+  end
 
 end
