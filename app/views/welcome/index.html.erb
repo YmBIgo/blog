@@ -1,5 +1,5 @@
-<div class="container text-center">
-  <% unless user_signed_in? %>
+<% unless user_signed_in? %>
+  <div class="container text-center">
     <div class="row">
       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="main_page-explain-area">
@@ -20,16 +20,13 @@
     </div>
   <% else %>
     <% unless current_user.full_profile? %>
-      <div class="not-finish-register">
-        <p>
-        <strong>
-          登録が完了すれば、グループの登録などが行えます。
-          <%= link_to "登録する", edit_user_path(current_user.id), :class => "btn btn-danger" %>
-        </strong>
-        </p>
-      </div>
+      <p class="alert alert-danger">
+        登録が完了すれば、グループの登録などが行えます。
+        <%= link_to "登録する", edit_user_path(current_user.id), :class => "btn btn-danger" %>
+      </p>
       <hr>
     <% end %>
+    <div class="container text-center">
     <br>
     <div class="row">
       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
