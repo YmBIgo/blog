@@ -4,6 +4,9 @@ class Mentor < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # association
+  has_many :notifications
+
   ## 新規追加前は、validation を増やして
   ## 　　環境変数に追加！　　
   validates :email, :inclusion => { :in => ["IgYmB0218LP@gmail.com"] }
