@@ -28,6 +28,7 @@ class VenturesController < ApplicationController
   def show
     @venture = Venture.find(params[:id])
     @user = User.find(@venture.owner)
+    @notifications = Notification.where(:venture_id => @venture.id).page(params[:page]).per(10).order("created_at DESC")
   end
   def edit
     @venture = Venture.find(params[:id])

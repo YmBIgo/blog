@@ -1,7 +1,9 @@
 class Venture < ActiveRecord::Base
+
   has_many :users
 
   validates_presence_of :name, :v_image, :explain, :reason, :vision, :job_offer, :owner
+
   has_attached_file :v_image,
                     :styles => {
                       :thumb  => "150x100",

@@ -48,7 +48,8 @@
     <% unless current_user.full_profile? %>
       <p class="alert alert-danger margin-0">
         登録が完了すれば、グループの登録などが行えます。
-        <%= link_to "登録する", edit_user_path(current_user.id), :class => "btn btn-danger" %>
+        <%= link_to "登録する", edit_user_path(current_user.id),
+                               :class => "btn btn-danger" %>
       </p>
       <hr>
     <% end %>

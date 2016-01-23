@@ -21,7 +21,9 @@
             <% end %>
           </h3>
           <hr>
-          <%= image_tag(@venture.authenticated_vimage_url(:large), :class => "img-center") %>
+          <a href="/ventures/<%= @venture.id %>">
+            <%= image_tag(@venture.authenticated_vimage_url(:large),:class => "img-center hover_img") %>
+          </a>
         </td>
       </tr>
       <tr>
@@ -41,6 +43,10 @@
       </tr>
       <tr>
         <td>
+          <h3><strong>最近の動向</strong></h3>
+          <hr>
+          <%= render @notifications %>
+          <%= paginate @notifications %>
         </td>
       </tr>
     </table>

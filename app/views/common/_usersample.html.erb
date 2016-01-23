@@ -2,6 +2,8 @@
   <div class="explain-area-inner">
     <% if @notifications.present? %>
       <%= render @notifications %>
+      <%= link_to "もっと見る", notifications_path,
+                              :class => "btn btn-primary form-label" %>
     <% else %>
       <h2><strong>(ここに更新した最新情報を表示)</strong></h2>
     <% end %>
