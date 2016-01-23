@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 
   def name
     if family_name.present? && first_name.present?
-      "#{family_name} #{first_name}"
+      "#{family_name} #{first_name}様"
     else
       "ゲスト様"
     end

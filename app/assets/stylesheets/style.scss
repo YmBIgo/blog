@@ -172,6 +172,14 @@
   -o-background-size: cover;
 }
 
+.register-venture-area-inner{
+  h2{
+    color:#428bca;
+    font-size:25px;
+    padding:10px;
+    background-color:rgba(240, 240, 240, 0.5);
+  }
+}
 
 // 編集
 .edit-page{
@@ -220,6 +228,10 @@
 
 .color-orange{
   color:#e7410a;
+}
+
+.color-black{
+  color:black;
 }
 
 .half-width{

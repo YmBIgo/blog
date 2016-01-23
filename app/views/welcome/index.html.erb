@@ -46,7 +46,7 @@
   <% ## ユーザー -%>
 
     <% unless current_user.full_profile? %>
-      <p class="alert alert-danger">
+      <p class="alert alert-danger margin-0">
         登録が完了すれば、グループの登録などが行えます。
         <%= link_to "登録する", edit_user_path(current_user.id), :class => "btn btn-danger" %>
       </p>
@@ -55,14 +55,21 @@
     <div class="container text-center">
     <br>
     <div class="row">
+      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div class="main-page-latest-area text-left">
+          <%= render 'common/latest' %>
+          <%= render 'common/usersample' %>
+        </div>
+      </div>
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="main-page-mypage-area">
           <h3 class="pad-vertical-sm"><strong>ユーザー情報</strong></h3>
           <% unless current_user.register_venture? %>
             <div class="register_new_venture">
-              <div class="let-register-area hover_img"></div>
-              <div class="latest-area-inner">
-                <h2 class="text-left"><strong>事業を登録しよう！</strong></h2>
+              <div class="let-register-area hover_img">
+                <div class="register-venture-area-inner">
+                  <h2 class="text-left"><strong>事業を登録しよう！</strong></h2>
+                </div>
               </div>
               <%= link_to "事業を登録する(1つまで)",
                           new_venture_path,
@@ -104,12 +111,6 @@
               </div>
             <% end %>
           </div>
-        </div>
-      </div>
-      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
-        <div class="main-page-latest-area text-left">
-          <%= render 'common/latest' %>
-          <%= render 'common/usersample' %>
         </div>
       </div>
     </div>
