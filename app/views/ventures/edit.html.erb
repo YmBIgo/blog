@@ -30,15 +30,19 @@
                 <td class=" col-xl-9 col-lg-9 col-md-9 col-sm-9 col-xs-9">
                   <%= f.label "事業概要", :class => "form-actions" %>
                   <%= f.text_area :explain,
-                                  :size => "30x10",
+                                  :size => "30x8",
+                                  :class => "form-control" %>
+                  <%= f.label "始めた理由", :class => "form-actions" %>
+                  <%= f.text_area :reason,
+                                  :size => "30x8",
                                   :class => "form-control" %>
                   <%= f.label "ビジョン", :class => "form-actions" %>
                   <%= f.text_area :vision,
-                                  :size => "30x10",
+                                  :size => "30x8",
                                   :class => "form-control" %>
                   <%= f.label "求める仲間", :class => "form-actions" %>
                   <%= f.text_area :job_offer,
-                                  :size => "30x10",
+                                  :size => "30x8",
                                   :class => "form-control" %>
                   <%= f.hidden_field :owner, :value => current_user.id %>
                 </td>

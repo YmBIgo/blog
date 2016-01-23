@@ -9,8 +9,16 @@ class VenturesController < ApplicationController
   end
   def create
     @venture = Venture.create(change_params)
-    redirect_to venture_path(@venture.id)
-    flash[:notice] = "登録が完了しました"
+    if @venture.valid?
+      Notification.create(:user_id    => @venture.owner,
+                          :venture_id => @venture.id,
+                          :type_id    => 1)
+      redirect_to venture_path(@venture.id)
+      flash[:notice] = "登録が完了しました"
+    else
+      redirect_to :back
+      flash[:error] = "登録できませんでした"
+    end
   end
   def index
     if user_signed_in?
@@ -19,6 +27,7 @@ class VenturesController < ApplicationController
   end
   def show
     @venture = Venture.find(params[:id])
+    @user = User.find(@venture.owner)
   end
   def edit
     @venture = Venture.find(params[:id])

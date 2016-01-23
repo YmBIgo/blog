@@ -54,8 +54,9 @@
     <div class="container text-center">
     <br>
     <div class="row">
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="main-page-mypage-area">
+          <h3 class="pad-vertical-sm"><strong>ユーザー情報</strong></h3>
           <% unless current_user.register_venture? %>
             <div class="register_new_venture">
               <div class="let-register-area hover_img"></div>
@@ -75,7 +76,7 @@
             </div>
           <% end %>
           <hr>
-          <div class="explain-area">
+          <div class="">
             <% if current_user.full_profile? %>
               <a href="/users/<%= current_user.id %>">
               <%= image_tag(current_user.authenticated_image_url(:medium),
@@ -101,7 +102,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
         <div class="main-page-latest-area text-left">
           <%= render 'common/latest' %>
           <%= render 'common/usersample' %>

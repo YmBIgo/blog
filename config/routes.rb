@@ -15,9 +15,10 @@ devise_for :users, controllers: {
   match '/mentor_info',    to: 'static_pages#mentor',     via: 'get'
   match '/community', to: 'static_pages#community',  via: 'get'
 
-  resources       :users,       only:[:show, :index, :edit, :update]
-  resources       :ventures,    only:[:new, :create, :show, :index, :edit, :update]
-  resources       :mentors,     only:[:show, :index, :edit, :update]
+  resources       :users,         only:[:show, :index, :edit, :update]
+  resources       :ventures,      only:[:new, :create, :show, :index, :edit, :update]
+  resources       :mentors,       only:[:show, :index, :edit, :update]
+  resources       :notifications, only:[:index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

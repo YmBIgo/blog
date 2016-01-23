@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123013322) do
+ActiveRecord::Schema.define(version: 20160123052507) do
 
   create_table "mentors", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20160123013322) do
 
   add_index "mentors", ["email"], name: "index_mentors_on_email", unique: true, using: :btree
   add_index "mentors", ["reset_password_token"], name: "index_mentors_on_reset_password_token", unique: true, using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "type_id",     limit: 4
+    t.integer  "user_id",     limit: 4
+    t.integer  "mentor_id",   limit: 4
+    t.integer  "venture_id",  limit: 4
+    t.integer  "coaching_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
