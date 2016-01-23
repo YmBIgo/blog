@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def full_profile?
-    family_name? && first_name? && age? && belong? && self_intro? && image?
+    family_name? && first_name? && age? && belong? && image?
   end
 
   def register_venture?

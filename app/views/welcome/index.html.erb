@@ -1,3 +1,4 @@
+<% provide :title, "ようこそ！" %>
 <% unless user_signed_in? %>
   <div class="container text-center">
     <% unless mentor_signed_in? %>
@@ -60,6 +61,9 @@
           <% unless current_user.register_venture? %>
             <div class="register_new_venture">
               <div class="let-register-area hover_img"></div>
+              <div class="latest-area-inner">
+                <h2 class="text-left"><strong>事業を登録しよう！</strong></h2>
+              </div>
               <%= link_to "事業を登録する(1つまで)",
                           new_venture_path,
                           :class => "btn btn-primary form-actions" %>

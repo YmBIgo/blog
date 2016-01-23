@@ -23,11 +23,11 @@ class MentorsController < ApplicationController
       if current_mentor.id == @chk_mentor.id
       else
         redirect_to root_path
-        flash[:error] = "編集する権限はありません"
+        flash[:alert] = "編集する権限はありません"
       end
     else
       redirect_to root_path
-      flash[:error] = "編集する権限はありません"
+      flash[:alert] = "編集する権限はありません"
     end
   end
 

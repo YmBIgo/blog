@@ -1,7 +1,7 @@
 class VenturesController < ApplicationController
 
   before_action :authenticate_user!,   only:[:new, :create, :edit, :update]
-  before_action :check_venture_exist,  only:[:new, :create]
+  before_action :check_venture,  only:[:new, :create]
   before_action :editable_user,        only:[:edit, :update]
 
   def new
@@ -17,7 +17,7 @@ class VenturesController < ApplicationController
       flash[:notice] = "登録が完了しました"
     else
       redirect_to :back
-      flash[:error] = "登録できませんでした"
+      flash[:alert] = "登録できませんでした"
     end
   end
   def index
@@ -41,10 +41,15 @@ class VenturesController < ApplicationController
 
   private
 
-  def check_venture_exist
-    if current_user.register_venture?
+  def check_venture
+    if current_user.full_profile?
+      if current_user.register_venture?
+        redirect_to root_path
+        flash[:alert] = "登録できる事業は一つまでです"
+      end
+    else
       redirect_to root_path
-      flash[:alert] = "登録できる事業は一つまでです"
+      flash[:alert] = "ユーザー登録を完了してください"
     end
   end
 

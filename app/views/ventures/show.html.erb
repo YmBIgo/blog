@@ -1,3 +1,4 @@
+<% provide :title, "#{@venture.name}の情報" %>
 <div class="container text-left">
   <div class="user-show-page">
     <table class="table table-striped table-bordered">
@@ -5,7 +6,11 @@
         <td>
           <h3 class="text-center">
             <strong><%= "#{@venture.name}" %></strong>
-            <small><%= "(#{@user.name}が作成)" %></small>
+            <small>
+              <a href="/users/<%= @user.id %>">
+                <%= "(#{@user.name}が作成)" %>
+              </a>
+            </small>
             <% if user_signed_in? %>
               <% if current_user.owned_venture(current_user) == @venture.id %>
                 <br>
