@@ -1,12 +1,15 @@
-class User < ActiveRecord::Base
+class Mentor < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  belongs_to :venture
+  ## 新規追加前は、validation を増やして
+  ## 　　環境変数に追加！　　
+  validates :email, :inclusion => { :in => ["IgYmB0218LP@gmail.com"] }
+
   ## s3 image
-  has_attached_file :image,
+  has_attached_file :m_image,
                     :styles => {
                       :thumb  => "100x100",
                       :medium => "150x150",
@@ -16,24 +19,10 @@ class User < ActiveRecord::Base
                     :s3_permissions => :private,
                     :s3_credentials => "#{Rails.root}/config/s3.yml",
                     :path           => ":attachment/:id/:style.:extension"
-  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  validates_attachment_content_type :m_image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  def authenticated_image_url(style)
-    image.s3_object(style).url_for(:read, :secure => true)
-  end
-
-  def full_profile?
-    family_name? && first_name? && age? && belong? && self_intro? && image?
-  end
-
-  def register_venture?
-    Venture.where('owner = ?', id).present?
-  end
-
-  def owned_venture(u)
-    if u.register_venture?
-      Venture.where('owner = ?', id).first.id
-    end
+  def authenticated_mimage_url(style)
+    m_image.s3_object(style).url_for(:read, :secure => true)
   end
 
   def name
@@ -43,5 +32,4 @@ class User < ActiveRecord::Base
       "ゲスト様"
     end
   end
-
 end

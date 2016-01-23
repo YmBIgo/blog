@@ -7,11 +7,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand" style="width:220px;padding:0 0 0 25px">
-        <%= image_tag "KBC/KBC_logo_tpt.png", :size => "110x45" %>
+      <a href="/" class="navbar-brand hover_img" style="width:220px;padding:0 0 0 25px">
+        <%= image_tag "KBC/KBC_logo_tpt.png",
+                      :size => "110x45" %>
       </a>
     </div>
-    <% unless user_signed_in? %>
+    <% unless user_signed_in? || mentor_signed_in? %>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
@@ -25,22 +26,31 @@
     <% else %>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <% if current_user.register_venture? %>
+          <% unless current_user.present? && !current_mentor.present? %>
             <li>
-              <%= link_to Venture.find(current_user.owned_venture(current_user)).name,
-                          venture_path(current_user.owned_venture(current_user)) %>
+              <%= link_to "#{current_mentor.name}(メンター)", mentor_path(current_mentor.id) %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_mentor_session_path, method: :delete %>
             </li>
           <% else %>
+            <% if current_user.register_venture? %>
+              <li>
+                <%= link_to Venture.find(current_user.owned_venture(current_user)).name,
+                            venture_path(current_user.owned_venture(current_user)) %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "事業を登録する", new_venture_path %>
+              </li>
+            <% end %>
             <li>
-              <%= link_to "事業を登録する", new_venture_path %>
+              <%= link_to current_user.name, user_path(current_user.id) %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
             </li>
           <% end %>
-          <li>
-            <%= link_to current_user.name, user_path(current_user.id) %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </li>
         </ul>
       </div>
     <% end %>

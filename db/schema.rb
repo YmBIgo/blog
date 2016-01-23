@@ -11,7 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122052744) do
+ActiveRecord::Schema.define(version: 20160123013322) do
+
+  create_table "mentors", force: :cascade do |t|
+    t.string   "email",                  limit: 255,   default: "", null: false
+    t.string   "encrypted_password",     limit: 255,   default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,     default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "first_name",             limit: 255
+    t.string   "family_name",            limit: 255
+    t.integer  "age",                    limit: 4
+    t.string   "belong",                 limit: 255
+    t.text     "self_intro",             limit: 65535
+    t.boolean  "sex"
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "m_image_file_name",      limit: 255
+    t.string   "m_image_content_type",   limit: 255
+    t.integer  "m_image_file_size",      limit: 4
+    t.datetime "m_image_updated_at"
+  end
+
+  add_index "mentors", ["email"], name: "index_mentors_on_email", unique: true, using: :btree
+  add_index "mentors", ["reset_password_token"], name: "index_mentors_on_reset_password_token", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false

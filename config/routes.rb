@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :mentors, controllers: {
+  sessions:      'mentors/sessions',
+  passwords:     'mentors/passwords',
+  registrations: 'mentors/registrations'
+}
+devise_for :users, controllers: {
+  sessions:      'users/sessions',
+  passwords:     'users/passwords',
+  registrations: 'users/registrations'
+}
 
   root to: "welcome#index"
   match '/mentor_info',    to: 'static_pages#mentor',     via: 'get'
@@ -8,6 +17,7 @@ Rails.application.routes.draw do
 
   resources       :users,       only:[:show, :index, :edit, :update]
   resources       :ventures,    only:[:new, :create, :show, :index, :edit, :update]
+  resources       :mentors,     only:[:show, :index, :edit, :update]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

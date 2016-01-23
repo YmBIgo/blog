@@ -1,24 +1,49 @@
 <% unless user_signed_in? %>
   <div class="container text-center">
-    <div class="row">
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="main_page-explain-area">
-          <%= render 'common/activity' %>
-          <div class="text-left">
-            <%= render 'common/mentor' %>
-            <%= render 'common/community' %>
-            <%= render 'common/media' %>
+    <% unless mentor_signed_in? %>
+
+    <% ## ログインしていないユーザー %>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="main_page-explain-area">
+            <%= render 'common/activity' %>
+            <div class="text-left">
+              <%= render 'common/mentor' %>
+              <%= render 'common/community' %>
+              <%= render 'common/media' %>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="main-page-latest-area text-left">
+            <%= render 'common/latest' %>
+            <%= render 'common/usersample' %>
           </div>
         </div>
       </div>
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <div class="main-page-latest-area text-left">
-          <%= render 'common/latest' %>
-          <%= render 'common/usersample' %>
+    <% else %>
+
+    <% ## メンター -%>
+
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="main_page-explain-area">
+            <%= render 'common/activity' %>
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="main-page-latest-area text-left">
+            <%= render 'common/latest' %>
+            <%= render 'common/usersample' %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% else %>
+
+  <% ## ユーザー -%>
+
     <% unless current_user.full_profile? %>
       <p class="alert alert-danger">
         登録が完了すれば、グループの登録などが行えます。
@@ -29,27 +54,54 @@
     <div class="container text-center">
     <br>
     <div class="row">
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="main-page-mypage-area">
           <% unless current_user.register_venture? %>
             <div class="register_new_venture">
+              <div class="let-register-area hover_img"></div>
               <%= link_to "事業を登録する(1つまで)",
                           new_venture_path,
-                          :class => "btn btn-primary btn-lg form-actions" %>
+                          :class => "btn btn-primary form-actions" %>
             </div>
           <% else %>
-            <div class="my_venture">
-              <h3 class="pad-vertical-sm">
-                <strong><%= @venture.name %></strong>
-              </h3>
+            <div class="my_venture pad-vertical-sm">
               <a href="/ventures/<%= current_user.owned_venture(current_user) %>">
                 <%= image_tag(@venture.authenticated_vimage_url(:medium), :class => "hover_img") %>
               </a>
+              <br>
+              <%= link_to "事業情報を編集する",
+                          edit_venture_path(@venture.id),
+                          :class => "btn btn-primary form-actions" %>
             </div>
           <% end %>
+          <hr>
+          <div class="explain-area">
+            <% if current_user.full_profile? %>
+              <a href="/users/<%= current_user.id %>">
+              <%= image_tag(current_user.authenticated_image_url(:medium),
+                            :class => "hover_img") %>
+              </a>
+              <br>
+              <%= link_to "ユーザー情報を編集する",
+                          edit_user_path(current_user.id),
+                          :class => "btn btn-primary form-actions" %>
+            <% else %>
+              <div class="pad-vertical-sm">
+                <a href="/users/<%= current_user.id %>">
+                <%= image_tag "Guest/no_image.png",
+                              :size  => "200x200",
+                              :class => "hover_img" %>
+                <br>
+                <%= link_to "ユーザー登録を完了させる",
+                            edit_user_path(current_user.id),
+                            :class => "btn btn-danger form-actions" %>
+                </a>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
-      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <div class="main-page-latest-area text-left">
           <%= render 'common/latest' %>
           <%= render 'common/usersample' %>
