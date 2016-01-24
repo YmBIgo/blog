@@ -8,15 +8,9 @@
     <hr>
     <div class="row">
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-xs-12">
-        <% if @user.image.present? %>
-          <%= image_tag(@user.authenticated_image_url(:medium), :class => "img-center hover_img") %>
-        <% else %>
-          <%= image_tag 'Guest/unknown_user.png', :size => "200x200", :class => "img-center" %>
-        <% end %>
-        <% if user_signed_in? && current_user.id == @user.id %>
-          <br>
-          <%= link_to "編集する", edit_user_path(current_user.id), :class => "btn btn-primary img-center" %>
-        <% end %>
+        <div class="text-center">
+          <%= render 'users/user_info' %>
+        </div>
         <br>
       </div>
       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-7 col-xs-12">

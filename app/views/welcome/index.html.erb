@@ -65,54 +65,7 @@
       </div>
       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="main-page-mypage-area">
-          <h3 class="pad-vertical-sm"><strong>ユーザー情報</strong></h3>
-          <% unless current_user.register_venture? %>
-            <div class="register_new_venture">
-              <div class="let-register-area hover_img">
-                <div class="register-venture-area-inner">
-                  <h2 class="text-left"><strong>事業を登録しよう！</strong></h2>
-                </div>
-              </div>
-              <%= link_to "事業を登録する(1つまで)",
-                          new_venture_path,
-                          :class => "btn btn-primary form-actions" %>
-            </div>
-          <% else %>
-            <div class="my_venture pad-vertical-sm">
-              <a href="/ventures/<%= current_user.owned_venture(current_user) %>">
-                <%= image_tag(@venture.authenticated_vimage_url(:medium), :class => "hover_img") %>
-              </a>
-              <br>
-              <%= link_to "事業情報を編集する",
-                          edit_venture_path(@venture.id),
-                          :class => "btn btn-primary form-actions" %>
-            </div>
-          <% end %>
-          <hr>
-          <div class="">
-            <% if current_user.full_profile? %>
-              <a href="/users/<%= current_user.id %>">
-              <%= image_tag(current_user.authenticated_image_url(:medium),
-                            :class => "hover_img") %>
-              </a>
-              <br>
-              <%= link_to "ユーザー情報を編集する",
-                          edit_user_path(current_user.id),
-                          :class => "btn btn-primary form-actions" %>
-            <% else %>
-              <div class="pad-vertical-sm">
-                <a href="/users/<%= current_user.id %>">
-                <%= image_tag "Guest/no_image.png",
-                              :size  => "200x200",
-                              :class => "hover_img" %>
-                <br>
-                <%= link_to "ユーザー登録を完了させる",
-                            edit_user_path(current_user.id),
-                            :class => "btn btn-danger form-actions" %>
-                </a>
-              </div>
-            <% end %>
-          </div>
+          <%= render 'users/user_info' %>
         </div>
       </div>
     </div>

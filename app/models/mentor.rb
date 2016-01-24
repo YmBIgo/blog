@@ -9,7 +9,7 @@ class Mentor < ActiveRecord::Base
 
   ## 新規追加前は、validation を増やして
   ## 　　環境変数に追加！　　
-  validates :email, :inclusion => { :in => ["IgYmB0218LP@gmail.com"] }
+  validates :email, :inclusion => { :in => ["igymb0218lp@gmail.com"] }
 
   ## s3 image
   has_attached_file :m_image,

@@ -1,0 +1,61 @@
+<div class="pad-vertical-sm">
+  <% if @user.full_profile? %>
+    <a href="/users/<%= @user.id %>">
+      <%= image_tag(@user.authenticated_image_url(:medium),
+                    :class => "hover_img") %>
+    </a>
+    <br>
+    <% if @user==current_user %>
+      <%= link_to "ユーザー情報を編集する",
+                  edit_user_path(@user.id),
+                  :class => "btn btn-primary form-actions" %>
+    <% end %>
+<% else %>
+  <% if @user==current_user %>
+    <div class="pad-vertical-sm">
+      <a href="/users/<%= @user.id %>">
+        <%= image_tag "Guest/no_image.png",
+                      :size  => "200x200",
+                      :class => "hover_img" %>
+      <br>
+      <%= link_to "ユーザー登録を完了させる",
+                  edit_user_path(@user.id),
+                  :class => "btn btn-danger form-actions" %>
+      </a>
+    </div>
+  <% else %>
+    <div class="pad-vertical-sm">
+      <%= image_tag "Guest/no_image.png",
+                    :size  => "200x200",
+                    :class => "hover_img" %>
+    </div>
+  <% end %>
+<% end %>
+</div>
+<% if @user==current_user %>
+  <hr>
+  <% unless @user.register_venture? %>
+    <div class="register_new_venture">
+      <a href="/ventures/new">
+        <div class="let-register-area hover_img">
+          <div class="register-venture-area-inner">
+            <h2 class="text-left"><strong>事業を登録しよう！</strong></h2>
+          </div>
+        </div>
+      </a>
+      <%= link_to "事業を登録する(1つまで)",
+                  new_venture_path,
+                  :class => "btn btn-primary form-actions" %>
+    </div>
+  <% else %>
+    <div class="my_venture">
+      <a href="/ventures/<%= @user.owned_venture(@user) %>">
+        <%= image_tag(@venture.authenticated_vimage_url(:medium), :class => "hover_img") %>
+      </a>
+      <br>
+      <%= link_to "事業情報を編集する",
+                  edit_venture_path(@venture.id),
+                  :class => "btn btn-primary form-actions" %>
+    </div>
+  <% end %>
+<% end %>
