@@ -1,4 +1,4 @@
-<div class="pad-vertical-sm">
+<div>
   <% if @user.full_profile? %>
     <a href="/users/<%= @user.id %>">
       <%= image_tag(@user.authenticated_image_url(:medium),

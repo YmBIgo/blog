@@ -1,6 +1,8 @@
 class Mentors::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
 
+  before_action :check_user
+
   # GET /resource/sign_in
   # def new
   #   super
@@ -22,4 +24,10 @@ class Mentors::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.for(:sign_in) << :attribute
   # end
+
+  private
+  def check_user
+    redirect_to root_path if current_user.present?
+  end
+
 end
