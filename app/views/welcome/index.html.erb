@@ -1,4 +1,11 @@
 <% provide :title, "ようこそ！" %>
+<header>
+  <div class="header-content">
+    <div class="header-content-inner">
+      <p>KBC</p>
+    </div>
+  </div>
+</header>
 <% unless user_signed_in? %>
   <div class="container text-center">
     <% unless mentor_signed_in? %>

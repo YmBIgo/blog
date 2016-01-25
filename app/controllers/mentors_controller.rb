@@ -13,6 +13,8 @@ class MentorsController < ApplicationController
   def update
     @mentor = Mentor.find(params[:id])
     @mentor.update(update_params)
+    redirect_to :back
+    flash[:notice] = "編集完了しました"
   end
 
   private
@@ -32,7 +34,7 @@ class MentorsController < ApplicationController
   end
 
   def update_params
-    params.require(:mentors).permit(:family_name, :first_name, :age, :belong, :self_intro, :m_image)
+    params.require(:mentor).permit(:family_name, :first_name, :age, :belong, :self_intro, :m_image)
   end
 
 end
