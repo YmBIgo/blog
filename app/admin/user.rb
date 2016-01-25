@@ -15,7 +15,7 @@ ActiveAdmin.register User do
 
 # m(_ _)m
 # admin から変更する場合は加える
-# permit_params :
+# permit_params
 
 
 end

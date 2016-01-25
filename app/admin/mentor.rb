@@ -13,5 +13,4 @@ ActiveAdmin.register Mentor do
 #   permitted
 # end
 
-
 end
