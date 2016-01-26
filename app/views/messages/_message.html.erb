@@ -1,0 +1,36 @@
+<div class="">
+  <a href="/ventures/<%= message.venture_id %>">
+    <%= image_tag(Venture.find(message.venture_id).authenticated_vimage_url(:thumb),
+                  :height => 50,
+                  :style => "margin-right:20px") %>
+  </a>
+  <div class="balloon-left"><%= simple_format(message.content) %>
+  </div>
+  <small style="position:relative;bottom:0"><%= message.created_at.strftime("%l:%m %p") %></small>
+</div>
+<% if message.answer_content.present? %>
+  <div align="right" class="form-label">
+    <small style="position:relative;bottom:0"><%= message.updated_at.strftime("%l:%m %p") %></small>
+    <div class="balloon-right"><%= simple_format(message.answer_content) %></div>
+    <a href="/mentors/<%= message.mentor_id %>">
+      <%= image_tag(Mentor.find(message.mentor_id).authenticated_mimage_url(:thumb),
+                    :height => 50,
+                    :width  => 50,
+                    :style => "margin-left:20px") %>
+    </a>
+  </div>
+<% else %>
+  <% if current_mentor.present? && current_mentor == Mentor.find(message.mentor_id) %>
+    <%= form_for message do |f| %>
+      <div class="row user_message_form form-label">
+        <div class="col-xl-10 col-lg-10 col-sm-10 col-xs-8">
+          <%= f.text_area :answer_content, cols:"15", rows:"2", autofocus:"true", class:"form-control", :placeholder => "返信お願いします" %>
+        </div>
+        <div class="col-xl-1 col-lg-1 col-sm-1 col-xs-2">
+          <%= f.submit "投稿する", :class => "btn btn-primary form-actions" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+

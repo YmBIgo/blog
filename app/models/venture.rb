@@ -2,6 +2,7 @@ class Venture < ActiveRecord::Base
 
   has_many :users
   has_many :notifications
+  has_many :messages
 
   validates_presence_of :name, :v_image, :explain, :reason, :vision, :job_offer, :owner
 

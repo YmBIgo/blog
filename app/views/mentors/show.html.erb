@@ -1,9 +1,9 @@
 <% provide :title, "#{@mentor.name}の情報" %>
 <div class="container text-left">
-  <div class="user-show-page wow fadeInDown">
+  <div class="user-show-page wow fadeIn">
     <h4 class="form-label"><strong><%= @mentor.name %></strong></h4>
     <p class="form-label">
-      <%= @mentor.belong %>所属：<%= @mentor.age %>年生まれ
+      <%= @mentor.belong %>：<%= @mentor.age %>年生まれ
     </p>
     <hr>
     <div class="row">
@@ -41,5 +41,56 @@
       </div>
     </div>
     <hr>
+    <h4><strong>相談一覧</strong></h4>
+    <hr>
+    <%= render @messages %>
+    <% if current_user.present? %>
+      <% if current_user.register_venture? %>
+        <% if current_user.owned_venture.messages.where(:mentor_id => @mentor.id).present? %>
+        <% else %>
+          <p class="margin-0">
+            <a href="/users/<%= current_user.id %>">
+              <%= image_tag(current_user.authenticated_image_url(:thumb),
+                            :height => 50,
+                            :style => "margin-right:20px;") %>
+            </a>
+            <strong class="balloon-left">
+              <%= @mentor.name %>に、事業の相談をしてみよう！
+            </strong>
+          </p>
+        <% end %>
+        <br>
+        <%= form_for @message do |f| %>
+          <div class="row user_message_form">
+            <div class="col-xl-10 col-lg-10 col-sm-10 col-xs-8">
+              <%= f.text_area :content, cols:"15", rows:"2", autofocus:"true", class:"form-control", :placeholder => "投稿してみよう" %>
+              <%= f.hidden_field :mentor_id, :value => @mentor.id %>
+              <%= f.hidden_field :venture_id,
+                                 :value => current_user.owned_venture.id %>
+            </div>
+            <div class="col-xl-1 col-lg-1 col-sm-1 col-xs-2">
+              <%= f.submit "投稿する", :class => "btn btn-primary form-actions" %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="margin-0">
+            <a href="/users/<%= current_user.id %>">
+              <% if current_user.full_profile? %>
+                <%= image_tag(current_user.authenticated_image_url(:thumb),
+                              :height => 50,
+                              :style => "margin-right:20px;") %>
+              <% else %>
+                <%= image_tag "Guest/unknown_user.png",
+                              :height => 50,
+                              :style => "margin-right:20px;" %>
+              <% end %>
+            </a>
+            <strong class="balloon-left">
+              事業を登録すれば、メンターの相談ができます。
+            </strong>
+          </p>
+      <% end %>
+    <% end %>
   </div>
 </div>

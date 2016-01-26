@@ -6,6 +6,7 @@ class Mentor < ActiveRecord::Base
 
   # association
   has_many :notifications
+  has_many :messages
 
   ## 新規追加前は、validation を増やして
   ## 　　環境変数に追加！　　

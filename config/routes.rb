@@ -21,6 +21,8 @@ devise_for :users, controllers: {
   resources       :ventures,      only:[:new, :create, :show, :index, :edit, :update]
   resources       :mentors,       only:[:show, :index, :edit, :update]
   resources       :notifications, only:[:index, :create]
+  resources       :messages,      only:[:create, :update]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

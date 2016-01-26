@@ -1,0 +1,11 @@
+<% provide :title, "ユーザー一覧" %>
+<div class="container text-left">
+  <div class="user-show-page">
+    <%= text_field :text, :user, :class => "form-control" %>
+    <hr>
+    <div class="user-search">
+      <%= render @mentors %>
+      <%= paginate @mentors %>
+    </div>
+  </div>
+</div>

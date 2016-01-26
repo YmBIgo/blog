@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <a href="/mentors/<%= mentor.id %>">
+      <%= image_tag(mentor.authenticated_mimage_url(:thumb), :class => "img-center hover_img") %>
+    </a>
+  </div>
+  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-xs-9">
+    <p>
+    <strong>
+      <%= link_to "#{mentor.name}(#{mentor.age}年生まれ)",
+                  mentor_path(mentor.id),
+                  :class => "" %>
+      <hr>
+      <%= mentor.belong %>
+    </strong>
+    </p>
+  </div>
+</div>
+<hr>

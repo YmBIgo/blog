@@ -310,6 +310,72 @@ header .header-content .header-content-inner:hover{
 .half-width{
   width:50%;
 }
+
+/* balloon-2 right */
+.balloon-right {
+  position: relative;
+  display: inline-block;
+  padding: 10px 15px;
+  width: auto;
+  max-width:50%;
+  height: auto;
+  border-radius:8px;
+  color:black;
+  line-height: 25px;
+  text-align: left;
+  background: #bbb;
+  z-index: 0;
+}
+.balloon-right:after {
+  content: "";
+  position: absolute;
+  bottom: 5px; right: -10px;
+  margin-top: -10px;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #bbb;
+}
+
+.balloon-right p{
+  margin-bottom:0;
+}
+
+/* balloon-2 left */
+.balloon-left {
+  position: relative;
+  display: inline-block;
+  padding: 10px 15px;
+  width: auto;
+  max-width:50%;
+  height: auto;
+  border-radius:8px;
+  color:black;
+  line-height: 25px;
+  text-align: left;
+  background: #FFFF33;
+  z-index: 0;
+}
+
+.balloon-left:after {
+  content: "";
+  position: absolute;
+  bottom: 5px; left: -10px;
+  margin-top: -10px;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #FFFF33 transparent transparent;
+}
+
+.balloon-left p{
+  margin-bottom:0;
+}
+
 body, td, th, form, h1, h2, h3, h4, h5, p, a, li {
     font-family: SalesforceSansRegular, メイリオ, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'ＭＳ Ｐゴシック', Arial, Helvetica, Verdana, sans-serif;
 }

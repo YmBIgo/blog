@@ -65,7 +65,22 @@
     <div class="row">
       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
         <div class="main-page-latest-area text-left">
-          <%= render 'common/mentoring' %>
+          <% if current_user.register_venture?  %>
+            <%= render 'common/mentoring' %>
+          <% else %>
+            <div class="register_new_venture wow fadeInLeft">
+              <a href="/ventures/new">
+                <div class="let-register-area hover_img">
+                  <div class="register-venture-area-inner">
+                    <h2 class="text-left"><strong>事業を登録しよう！</strong></h2>
+                  </div>
+                </div>
+              </a>
+              <%= link_to "事業を登録する(1つまで)",
+                          new_venture_path,
+                          :class => "btn btn-primary form-actions" %>
+            </div>
+          <% end %>
           <%= render 'common/latest' %>
           <%= render 'common/usersample' %>
         </div>

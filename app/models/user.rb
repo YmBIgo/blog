@@ -32,9 +32,10 @@ class User < ActiveRecord::Base
     Venture.where('owner = ?', id).present?
   end
 
-  def owned_venture(u)
-    if u.register_venture?
-      Venture.where('owner = ?', id).first.id
+  def owned_venture
+    if register_venture?
+      Venture.where('owner = ?', id).first
+    else
     end
   end
 

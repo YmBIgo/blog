@@ -49,7 +49,7 @@
     </div>
   <% else %>
     <div class="my_venture">
-      <a href="/ventures/<%= @user.owned_venture(@user) %>">
+      <a href="/ventures/<%= @user.owned_venture.id %>">
         <%= image_tag(@venture.authenticated_vimage_url(:medium), :class => "hover_img") %>
       </a>
       <br>

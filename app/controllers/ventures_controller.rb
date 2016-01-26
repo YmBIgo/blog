@@ -7,6 +7,7 @@ class VenturesController < ApplicationController
   def new
     @venture = Venture.new
   end
+
   def create
     @venture = Venture.create(change_params)
     if @venture.valid?
@@ -20,19 +21,23 @@ class VenturesController < ApplicationController
       flash[:alert] = "登録できませんでした"
     end
   end
+
   def index
     if user_signed_in?
       @venture = Venture.where('owner = ?', current_user.id).first
     end
   end
+
   def show
     @venture = Venture.find(params[:id])
     @user = User.find(@venture.owner)
     @notifications = @venture.notifications.page(params[:page]).per(10).order("created_at DESC")
   end
+
   def edit
     @venture = Venture.find(params[:id])
   end
+
   def update
     @venture = Venture.find(params[:id])
     @venture.update(change_params)
@@ -64,10 +69,6 @@ class VenturesController < ApplicationController
       redirect_to root_path
       flash[:alert] = "編集できません"
     end
-  end
-
-  def change_params
-    params.require(:venture).permit(:name, :v_image, :explain, :reason, :vision, :job_offer, :owner)
   end
 
 end
