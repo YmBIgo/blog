@@ -1,0 +1,64 @@
+/* Common Function */
+
+/* PopUp */
+.main-page{
+	z-index:1;
+}
+.font-color-white{
+	color:white;
+}
+.font-color-black{
+	color:black;
+}
+.popup1 {
+	z-index:3;
+	background-color:rgba(24, 24, 24, .45);
+	/*height:640px;*/
+	margin-top:-240px;
+}
+.hide-popup{
+	display:none;
+}
+.popup1-inner{
+	z-index:3;
+	margin:0 7.5%;
+	padding-top:110px;
+	width:85%;
+}
+
+/* Message */
+.message-app-region{
+	z-index: 3;
+	background-color:white;
+	padding:5px 20px;
+}
+.message-app-title{
+	margin-top:24px;
+}
+.thread-region{
+	width:95%;
+	margin-bottom:10px;
+	padding:10px;
+	border:1px solid rgba(218, 218, 218, 0.64);
+}
+.each-message-region{
+	height:240px;
+	overflow:scroll;
+	padding:10px;
+	border:1px solid rgba(164, 164, 164, 0.64);
+	border-radius:6px;
+}
+.rightside-message{
+	margin-left:30%;
+}
+.alert.start-message{
+	width:93%;
+}
+.alert.each-message {
+	width:64%;
+}
+.form-control.message-send-form{
+	margin-top:11px;
+	margin-bottom:11px;
+	width:64%;
+}
