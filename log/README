@@ -2,10 +2,10 @@
 
 
   // スレッドをコンソールから作成
-　generate_thread("first message");
-  generate_thread("second_message");
-  generate_thread("third_message");
+　generate_thread(1, "first message");
+  generate_thread(2, "second_message");
+  generate_thread(3, "third_message");
   
 を作成。
 
-動かない場合は、コマンドコンソールの「ストレージ」で localstorage_data.pngを保存
+動かない場合は、コマンドコンソールの「ストレージ」で localstorage_data.png の内容を保存
