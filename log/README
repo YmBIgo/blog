@@ -2,9 +2,9 @@
 
 
   // スレッドをコンソールから作成
-　generate_thread(1, "first message");
-  generate_thread(2, "second_message");
-  generate_thread(3, "third_message");
+　start_thread();
+  start_thread();
+  start_thread();
   
 を作成。
 
