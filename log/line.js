@@ -135,8 +135,10 @@ function get_senders(thread_id){
 // UI
 //
 function start_thread(){
+	if ( document.getElementsByClassName("thread-region").length != 0 ) {
+		remove_threads();
+	}
 	generate_thread("Let's talk with your customers!!!!");
-	remove_threads();
 	show_threads();
 }
 function show_threads(){
@@ -168,8 +170,10 @@ function show_threads(){
 
 function remove_threads(){
 	let thread_ids 		= current_threads();
-	for ( var i = 0;  i < thread_ids.length; i++ ){
-		document.getElementsByClassName("thread-region")[i].innerHTML = "";
+	if ( thread_ids.length > 0 ) {
+		for ( var i = 0;  i < thread_ids.length; i++ ){
+			document.getElementsByClassName("thread-region")[i].innerHTML = "";
+		}
 	}
 }
 
