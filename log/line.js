@@ -71,6 +71,7 @@ function generate_message(thread_id, message){
 function generate_thread(first_message){
 	//
 	var c_threads  		 = current_threads();
+	if ( !c_threads[0] ) { c_threads = [0] }
 	let latest_thread_id = c_threads.sort()[c_threads.length-1] + 1;
 	generate_message(latest_thread_id, first_message);
 	set_thread_sender(latest_thread_id);
